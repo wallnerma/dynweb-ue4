@@ -1,5 +1,7 @@
 ﻿ # dynweb-ue4
- Vierte Hausübung für Dynamisches Web
+ Vierte Hausübung für Dynamisches Web:  
+ * <strong>Refactoring</strong>  
+ * <strong>Cookies</strong>
 
  ## Team
  * Marcus Wallner
