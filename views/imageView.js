@@ -1,12 +1,12 @@
 const layout = require('./layout');
-const allGalleries = require('../templates/allGalleries');
+const imgThumb = require('../templates/imgThumb');
 
-function renderView(galleries) {
+function renderView(galleryName, gallery) {
     const now = new Date();
     const data = {
         currentYear: now.getFullYear(),
-        bodyPartial: 'allGalleries',
-        galleries: galleries
+        bodyPartial: 'gallery',
+        gallery: gallery
     };
     return layout(data);
 }

@@ -146,11 +146,13 @@ hbs.registerPartial('orderableImgThumb', `
       </div>`);
       */
 
+/*
 hbs.registerPartial('imgThumb', `
       <div class="img-thumbnail">
           <img class="thumbnail" src="{{imgUri}}">
           <div class="label subtle">{{label}}</div>
       </div>`);
+*/
 
 /*
 hbs.registerPartial('galleryTeaser', `
@@ -305,6 +307,8 @@ app.get('/galleries', (req, res) => {
 //     });
 // }
 
+
+/*
 app.get('/galleries/:galleryKey', (req, res) => {
     const galleryKey = req.params.galleryKey;
     const galleryName = galleryKey;
@@ -340,6 +344,7 @@ app.get('/galleries/:galleryKey', (req, res) => {
         res.send(layout(data));
     });
 });
+*/
 
 app.use('/shopping-cart', cookieParser());
 app.post('/shopping-cart/add', bodyParser.urlencoded({ extended: true }));
