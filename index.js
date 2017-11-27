@@ -9,7 +9,8 @@ const cookieParser = require('cookie-parser');
 const router = require('./router');
 
 // TODO these dependencies will go away eventually once every functionality has been put into the MVC structure
-// TODO Hint: In a perfectly structured MVC app, this starting script will be about 5 to 10 lines long. It's sole purpose is to create the express app, call the router to configure routes and then start the server
+// TODO Hint: In a perfectly structured MVC app, this starting script will be about 5 to 10 lines long.
+// It's sole purpose is to create the express app, call the router to configure routes and then start the server
 const layout = require('./views/layout');
 const galleries = require('./models/galleries');
 
@@ -128,7 +129,9 @@ const app = express();
 
 
 // TODO You're probably going to move these partials into the views that are using them
-// TODO Some partials may be used by distinct views, thus you might gonna end up with a fragments module that holds these kind of generic HTML snippets
+// TODO Some partials may be used by distinct views, thus you might gonna end up with a
+//  fragments module that holds these kind of generic HTML snippets
+/*
 hbs.registerPartial('orderableImgThumb', `
       <div class="img-thumbnail">
           <img class="thumbnail" src="{{imgUri}}">
@@ -141,6 +144,7 @@ hbs.registerPartial('orderableImgThumb', `
               </form>
           </div>
       </div>`);
+      */
 
 hbs.registerPartial('imgThumb', `
       <div class="img-thumbnail">
@@ -148,6 +152,7 @@ hbs.registerPartial('imgThumb', `
           <div class="label subtle">{{label}}</div>
       </div>`);
 
+/*
 hbs.registerPartial('galleryTeaser', `
       <div class="gallery-teaser img-thumbnail">
           <a href="{{galleryUri}}">
@@ -155,7 +160,9 @@ hbs.registerPartial('galleryTeaser', `
               <p>{{name}}</p>
           </a>
       </div>`);
+*/
 
+/*
 hbs.registerPartial('startPage', `
     <h1>Neueste Gallerien - Fotograf Lutz Maier</h1>
     <div class="clearfix">
@@ -164,7 +171,10 @@ hbs.registerPartial('startPage', `
     {{/each}}
     </div>
     <p><a href="/galleries">Alle Gallerien &rarr;</a></p>`);
+*/
 
+
+/*
 hbs.registerPartial('allGalleries', `
     <h1>Alle Gallerien - Fotograf Lutz Maier</h1>
     <div class="clearfix">
@@ -172,7 +182,8 @@ hbs.registerPartial('allGalleries', `
       {{>galleryTeaser}}
     {{/each}}
     </div>`);
-
+*/
+/*
 hbs.registerPartial('gallery', `
     <h1>{{gallery.name}}</h1>
     <div class="clearfix">
@@ -180,6 +191,7 @@ hbs.registerPartial('gallery', `
       {{>orderableImgThumb galleryUri=../gallery.uri}}
     {{/each}}
     </div>`);
+*/
 
 hbs.registerPartial('shoppingCart', `
     <h1>Warenkorb</h1>
@@ -221,6 +233,7 @@ app.use(express.static('public'));
 
 router(app);
 
+/*
 app.get('/galleries', (req, res) => {
     function generateResponse(galleries) {
         const now = new Date();
@@ -234,6 +247,7 @@ app.get('/galleries', (req, res) => {
 
     galleries.getGalleries(generateResponse);
 });
+*/
 
 // /**
 //  * Builds a galleries data structure from filesystem contents
@@ -365,7 +379,9 @@ app.get('/shopping-cart', (req, res) => {
     res.send(layout(data));
 });
 
-// TODO For error situations I imagine having an errorController or something like that which is responsible to respond with 404, 500 and these sort of things
+// TODO For error situations I imagine having an errorController or something like that which is
+// responsible to respond with 404, 500 and these sort of things
+
 // Custom 404
 app.use((req, res) => {
     const now = new Date();

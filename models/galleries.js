@@ -1,9 +1,11 @@
 const fs = require('fs');
 
 // HINT: A model isn't aware that it's data is going to be shown as a webpage, follow these rules:
-//  1: a model doesn't know where the input data (such as function parameters) comes from, thus it has no idea that input data is from an HTTP request or from a unit test or from anywhere else
-//  2: a model doesn't know what is going to be done with the data it returns to the outside. This is simply not the business of the model
-//  3: a model (as every module shall be by the way) is very shy to reveal it's inner workings if not necessary.
+//  1:  a model doesn't know where the input data (such as function parameters) comes from, thus it has no idea
+//      that input data is from an HTTP request or from a unit test or from anywhere else
+//  2:  a model doesn't know what is going to be done with the data it returns to the outside. This is simply
+//      not the business of the model
+//  3:  a model (as every module shall be by the way) is very shy to reveal it's inner workings if not necessary.
 
 /**
  * Builds a galleries data structure from filesystem contents
