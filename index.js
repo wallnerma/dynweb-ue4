@@ -204,17 +204,17 @@ hbs.registerPartial('gallery', `
 //     {{/each}}
 //     </div>`);
 
-hbs.registerPartial('guideUserAfterError', `
-    <p><a href="/">Hier</a> kommen Sie zurück zur <a href="/">Startseite</a>. 
-    Oder durchstöbern Sie meine <a href="/galleries">Gallerien</a>.</p>`);
-
-hbs.registerPartial('404', `
-    <h1>Angeforderte Seite nicht gefunden</h1>
-    {{> guideUserAfterError}}`);
-
-hbs.registerPartial('500', `
-    <h1>Interner Fehler</h1>
-    {{> guideUserAfterError}}`);
+// hbs.registerPartial('guideUserAfterError', `
+//     <p><a href="/">Hier</a> kommen Sie zurück zur <a href="/">Startseite</a>.
+//     Oder durchstöbern Sie meine <a href="/galleries">Gallerien</a>.</p>`);
+//
+// hbs.registerPartial('404', `
+//     <h1>Angeforderte Seite nicht gefunden</h1>
+//     {{> guideUserAfterError}}`);
+//
+// hbs.registerPartial('500', `
+//     <h1>Interner Fehler</h1>
+//     {{> guideUserAfterError}}`);
 
 
 app.use(express.static('public'));
@@ -387,26 +387,26 @@ app.get('/galleries/:galleryKey', (req, res) => {
 // TODO For error situations I imagine having an errorController or something like that which is
 // responsible to respond with 404, 500 and these sort of things
 
-// Custom 404
-app.use((req, res) => {
-    const now = new Date();
-    const data = {
-        currentYear: now.getFullYear(),
-        bodyPartial: '404',
-    };
-    res.status(404).send(layout(data));
-});
-
-// Custom 500
-app.use((err, req, res) => {
-    console.log(`Unhandled error caught: [${err}]`);
-
-    const now = new Date();
-    const data = {
-        currentYear: now.getFullYear(),
-        bodyPartial: '500',
-    };
-    res.status(500).send(layout(data));
-});
+// // Custom 404
+// app.use((req, res) => {
+//     const now = new Date();
+//     const data = {
+//         currentYear: now.getFullYear(),
+//         bodyPartial: '404',
+//     };
+//     res.status(404).send(layout(data));
+// });
+//
+// // Custom 500
+// app.use((err, req, res) => {
+//     console.log(`Unhandled error caught: [${err}]`);
+//
+//     const now = new Date();
+//     const data = {
+//         currentYear: now.getFullYear(),
+//         bodyPartial: '500',
+//     };
+//     res.status(500).send(layout(data));
+// });
 
 app.listen(3000, () => console.log('Photopick listening on port 3000!'));

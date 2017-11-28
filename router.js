@@ -2,6 +2,7 @@ const homeController = require('./controllers/homeController');
 const allGalleriesController = require('./controllers/allGalleriesController');
 const imageController = require('./controllers/imageController');
 const shoppingCartController = require('./controllers/shoppingCartController');
+const errorController = require('./controllers/errorController')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
@@ -14,4 +15,6 @@ module.exports = function(app) {
     app.post('/shopping-cart/add', bodyParser.urlencoded({ extended: true }));
     app.post('/shopping-cart/add', shoppingCartController.postShoppingCart);
     app.get('/shopping-cart', shoppingCartController.getShoppingCart);
+    app.use(errorController.getError404);
+    app.use(errorController.getError500);
 };
