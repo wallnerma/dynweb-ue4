@@ -1,16 +1,5 @@
 const fs = require('fs');
 
-// HINT: A model isn't aware that it's data is going to be shown as a webpage, follow these rules:
-//  1:  a model doesn't know where the input data (such as function parameters) comes from, thus it has no idea
-//      that input data is from an HTTP request or from a unit test or from anywhere else
-//  2:  a model doesn't know what is going to be done with the data it returns to the outside. This is simply
-//      not the business of the model
-//  3:  a model (as every module shall be by the way) is very shy to reveal it's inner workings if not necessary.
-
-/**
- * Builds a galleries data structure from filesystem contents
- * @param doneHandler a function called when reading out galleries has been finished
- */
 function getGalleriesFromFS(doneHandler) {
     const basePath = process.cwd() + '/public/galleries/';
     fs.readdir(basePath, 'utf8', function(err, files) {
@@ -64,9 +53,5 @@ function getGalleriesFromFS(doneHandler) {
 }
 
 module.exports = {
-    // Hint: to the outside, other components that use the galleries model don't know that the galleries array is constructed from the filesystem.
-    // Yet, we name the internal function getGalleriesFromFS so that it is obvious to us developers that galleries are constructed from the file system. What's
-    // the point here? It saves the time that we otherwise would need to look throught the implementation of the function to see that the function reads
-    // from the filesystem.
     getGalleries: getGalleriesFromFS
 };
