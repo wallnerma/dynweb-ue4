@@ -1,4 +1,5 @@
 const shoppingCartView = require('../views/shoppingCartView');
+const orderSuccessView = require('../views/orderSuccessView');
 
 function handleGetShoppingCart(req, res) {
     const imagesInCart = req.cookies.shoppingCart || [];
@@ -26,7 +27,12 @@ function handlePostShoppingCart(req, res) {
     res.redirect(302, returnUri);
 }
 
+function handlePostOrderSuccess(req, res) {
+    res.send(orderSuccessView.renderView());
+}
+
 module.exports = {
     getShoppingCart: handleGetShoppingCart,
-    postShoppingCart: handlePostShoppingCart
+    postShoppingCart: handlePostShoppingCart,
+    postOrderSuccess: handlePostOrderSuccess
 };

@@ -7,7 +7,14 @@ const shoppingCart = hbs.registerPartial('shoppingCart', `
     {{#each shoppingCart.images}}
       {{>imgThumb}}
     {{/each}}
-    </div>`);
+    </div>
+    <form action="/shopping-cart/order" method="post">
+         <p><label>Vorname: <input type="text" name="firstname" required></label></p>     
+         <p><label>Nachname: <input type="text" name="lastname" required></label></p> 
+          <p><label>Telefonnummer: <input type="text" name="phonenumber"></label></p>   
+         <p><button type="submit">Absenden</button></p>     
+     </form>
+`);
 
 hbs.registerPartial('imgThumb', `
       <div class="img-thumbnail">
