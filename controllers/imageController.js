@@ -1,6 +1,5 @@
 const imageModel = require('../models/image');
 const imageView = require('../views/imageView');
-const galleryPartial = require('../templates/allGalleries')
 
 function handleGetImage(req, res) {
     const galleryKey = req.params.galleryKey;

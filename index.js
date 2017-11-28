@@ -195,14 +195,14 @@ hbs.registerPartial('gallery', `
     </div>`);
 */
 
-hbs.registerPartial('shoppingCart', `
-    <h1>Warenkorb</h1>
-    <p>Anzahl Bilder: {{shoppingCart.itemCount}}</p>
-    <div class="clearfix">
-    {{#each shoppingCart.images}}
-      {{>imgThumb}}
-    {{/each}}
-    </div>`);
+// hbs.registerPartial('shoppingCart', `
+//     <h1>Warenkorb</h1>
+//     <p>Anzahl Bilder: {{shoppingCart.itemCount}}</p>
+//     <div class="clearfix">
+//     {{#each shoppingCart.images}}
+//       {{>imgThumb}}
+//     {{/each}}
+//     </div>`);
 
 hbs.registerPartial('guideUserAfterError', `
     <p><a href="/">Hier</a> kommen Sie zurück zur <a href="/">Startseite</a>. 
@@ -346,43 +346,43 @@ app.get('/galleries/:galleryKey', (req, res) => {
 });
 */
 
-app.use('/shopping-cart', cookieParser());
-app.post('/shopping-cart/add', bodyParser.urlencoded({ extended: true }));
-app.post('/shopping-cart/add', (req, res) => {
-    const newlyAddedImgId = req.body.imgId;
-    const alreadyAddedImages = req.cookies.shoppingCart || [];
-    const imageNotYetAdded = !alreadyAddedImages.includes(newlyAddedImgId);
-    if (imageNotYetAdded) {
-        alreadyAddedImages.push(newlyAddedImgId);
-    }
-    res.cookie('shoppingCart', alreadyAddedImages, {httpOnly: true});
-
-    const returnUri = req.body.returnUri || '/';
-    res.redirect(302, returnUri);
-});
-
-app.get('/shopping-cart', (req, res) => {
-    const imagesInCart = req.cookies.shoppingCart || [];
-    const images = [];
-    imagesInCart.forEach(function(image) {
-        const label = image.slice(image.lastIndexOf('/') + 1);
-        images.push({
-            imgUri: '/galleries/' + image,
-            label: label
-        });
-    });
-
-    const now = new Date();
-    const data = {
-        currentYear: now.getFullYear(),
-        bodyPartial: 'shoppingCart',
-        shoppingCart: {
-            images: images,
-            itemCount: imagesInCart.length
-        }
-    };
-    res.send(layout(data));
-});
+// app.use('/shopping-cart', cookieParser());
+// app.post('/shopping-cart/add', bodyParser.urlencoded({ extended: true }));
+// app.post('/shopping-cart/add', (req, res) => {
+//     const newlyAddedImgId = req.body.imgId;
+//     const alreadyAddedImages = req.cookies.shoppingCart || [];
+//     const imageNotYetAdded = !alreadyAddedImages.includes(newlyAddedImgId);
+//     if (imageNotYetAdded) {
+//         alreadyAddedImages.push(newlyAddedImgId);
+//     }
+//     res.cookie('shoppingCart', alreadyAddedImages, {httpOnly: true});
+//
+//     const returnUri = req.body.returnUri || '/';
+//     res.redirect(302, returnUri);
+// });
+//
+// app.get('/shopping-cart', (req, res) => {
+//     const imagesInCart = req.cookies.shoppingCart || [];
+//     const images = [];
+//     imagesInCart.forEach(function(image) {
+//         const label = image.slice(image.lastIndexOf('/') + 1);
+//         images.push({
+//             imgUri: '/galleries/' + image,
+//             label: label
+//         });
+//     });
+//
+//     const now = new Date();
+//     const data = {
+//         currentYear: now.getFullYear(),
+//         bodyPartial: 'shoppingCart',
+//         shoppingCart: {
+//             images: images,
+//             itemCount: imagesInCart.length
+//         }
+//     };
+//     res.send(layout(data));
+// });
 
 // TODO For error situations I imagine having an errorController or something like that which is
 // responsible to respond with 404, 500 and these sort of things
