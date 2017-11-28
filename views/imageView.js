@@ -1,5 +1,5 @@
 const layout = require('./layout');
-const imgThumb = require('../templates/imgThumb');
+const gallery = require('../templates/gallery');
 
 function renderView(galleryName, gallery) {
     const now = new Date();
