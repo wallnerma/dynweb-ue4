@@ -1,5 +1,6 @@
 const shoppingCartView = require('../views/shoppingCartView');
 const orderSuccessView = require('../views/orderSuccessView');
+const orderModel = require('../models/orderModel');
 
 function handleGetShoppingCart(req, res) {
     const imagesInCart = req.cookies.shoppingCart || [];
@@ -28,6 +29,12 @@ function handlePostShoppingCart(req, res) {
 }
 
 function handlePostOrderSuccess(req, res) {
+    const firstName = req.body.firstname;
+    const lastName = req.body.lastname;
+    const telNumber = req.body.phonenumber;
+    console.log(firstName + lastName + telNumber);
+
+    orderModel.saveOrder(firstName, lastName, telNumber);
     res.send(orderSuccessView.renderView());
 }
 

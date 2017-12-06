@@ -16,7 +16,8 @@ module.exports = function(app) {
     app.post('/shopping-cart/add', bodyParser.urlencoded({ extended: true }));
     app.post('/shopping-cart/add', shoppingCartController.postShoppingCart);
     app.get('/shopping-cart', shoppingCartController.getShoppingCart);
-    app.get('/shopping-cart/order', shoppingCartController.postOrderSuccess);
+    app.post('/shopping-cart/order', bodyParser.urlencoded({ extended: true }));
+    app.post('/shopping-cart/order', shoppingCartController.postOrderSuccess);
     app.use(errorController.getError404);
     app.use(errorController.getError500);
 };
