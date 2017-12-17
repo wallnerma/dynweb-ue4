@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function saveOrderToFS(firstName, lastName, telNumber) {
+function saveOrderToFS(firstName, lastName, telNumber, imagesInCard) {
     const orderDir = process.cwd() + "/Bestellungen/";
     if (!fs.existsSync(orderDir)) {
         fs.mkdirSync(orderDir);
@@ -13,9 +13,27 @@ function saveOrderToFS(firstName, lastName, telNumber) {
     let minute = date.getUTCMinutes();
     let seconds = date.getUTCSeconds();
 
-    let fileName = year.toString() + "-" + month.toString() + "-" + day.toString() + "_" + hour.toString() + "-" + minute.toString() + "-" + seconds.toString() + "_" + firstName + "-" + lastName + '.txt';
+    let dateString = year.toString() + "-" + month.toString() + "-" + day.toString();
+    let timeString = hour.toString() + "-" + minute.toString() + "-" + seconds.toString();
+    let nameString = firstName + "-" + lastName;
 
-    fs.writeFile(orderDir + fileName, "test", 'utf8', (err) => {});
+    let fileName =  dateString + "_" + timeString + "_" + nameString + '.txt';
+
+    let inhalt = `
+    -------------------------------------------------
+    Vorname:        ${firstName}
+    Nachname:       ${lastName}
+    Telefonnummer:  ${telNumber}
+    -------------------------------------------------
+    Bestell-Datum:  ${dateString}
+    -------------------------------------------------
+    Bestellung:
+    ===========
+    ${imagesInCard}
+    
+    `;
+
+    fs.writeFile(orderDir + fileName, inhalt, 'utf8', (err) => {});
 
 
 }

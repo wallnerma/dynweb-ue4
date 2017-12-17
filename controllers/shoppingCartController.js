@@ -34,7 +34,17 @@ function handlePostOrderSuccess(req, res) {
     const telNumber = req.body.phonenumber;
     console.log(firstName + lastName + telNumber);
 
-    orderModel.saveOrder(firstName, lastName, telNumber);
+    const imagesInCart = req.cookies.shoppingCart || [];
+    const images = [];
+    imagesInCart.forEach(function(image) {
+        const label = image.slice(image.lastIndexOf('/') + 1);
+        images.push({
+            imgUri: '/galleries/' + image,
+            label: label
+        });
+    });
+
+    orderModel.saveOrder(firstName, lastName, telNumber, imagesInCart);
     res.send(orderSuccessView.renderView());
 }
 
